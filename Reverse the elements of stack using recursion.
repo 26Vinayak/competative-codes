@@ -1,0 +1,56 @@
+
+//Reverse Stack Using Recursion
+
+#include<bits/stdc++.h>
+using namespace std;
+void printstack(stack<int>s)
+{
+    cout<<"Data in stack : "<<endl;
+    while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+}
+void InsertAtbottom(stack<int>s,int data)
+{
+    int temp;
+    if(s.empty())
+    {
+        s.push(data);
+        return;
+    }
+    temp=s.top();
+    s.pop();
+    InsertAtbottom(s,data);
+    s.push(temp);
+}
+void reversestack(stack<int>s)
+{
+    int data;
+    if(s.empty())
+    {
+        return;
+    }
+    data=s.top();
+    s.pop();
+    reversestack(s);
+    InsertAtbottom(s,data);
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter the number of elements which you want to insert into stack. ";
+    cin>>n;
+    stack<int>s;
+    for(int  i=1;i<=n;i++)
+    {
+        int x;
+        cin>>x;
+        s.push(x);
+    }
+    reversestack(s);
+    cout<<"Print the element of reversed stack: "<<endl;
+    printstack(s);
+}
