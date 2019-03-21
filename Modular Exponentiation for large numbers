@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int power(int base, int pow, int mod) 
+{ 
+    int res = 1;      
+  
+    base = base % mod;  
+    while (pow > 0) 
+    { 
+           if (pow & 1) 
+            res = (res*base) % mod; 
+  
+        pow = pow>>1; 
+        base = (base*base) % mod;   
+    } 
+    return res; 
+} 
+
+int main() {
+	  int t,a,b,c;
+	cin>>t;
+	while(t--){
+	    cin>>a>>b>>c;
+	    cout<<power(a,b,c)<<endl;
+	}
+	return 0;
+}
