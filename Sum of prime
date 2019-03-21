@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+int isprime(int n)
+{
+    if(n==2)
+    {
+        return n;
+    }
+    if(n%2==0)
+    {
+        return 0;
+    }
+    else
+    {
+        for(int i=3;i<n-1;i+=2)
+        {
+            if(n%i==0)
+            {
+                return 0;
+            }
+        }
+        return n;
+    }
+}
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int flag=0;
+	    int n,x,y;
+	    cin>>n;
+	    int *a=new int[n+1]();
+	    for(int i=2,j=0;i<n;i+=1)
+	    {
+	         if(isprime(i))
+	         {
+	            a[j]=i;
+	            j++;
+	         }
+	    }
+	    for(int i=0;a[i];i++)
+	    {
+	          for(int j=i;a[j];j++)
+	          {
+	              if(a[i]+a[j]==n)
+	              {
+	                  flag=1;
+	                  cout<<a[i]<<" "<<a[j];
+	                  break;
+	              }
+	          }
+	          if(flag==1)
+	          {
+	              break;
+	          }
+	    }
+	    if(flag==0)
+	    {
+	        cout<<-1;
+	    }
+	    cout<<"\n";
+	}
+	return 0;
+}
